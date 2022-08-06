@@ -190,56 +190,44 @@
 		</div>
 		<div class="step-item" v-show="step == 4">
 			<van-form @submit="finish()" @toPre="toPreStep(3)">
-				<div v-for="(item,index) in userFamily">
-					<p style="padding: 10px 0;" v-if="index == 0"><i v-show="index==0"
-							style="color: red;font-size: 20px;position: relative;top: 8px;left: -6px;">*</i>家庭主要成员{{index == 0 ? "一" : "二"}}
-					</p>
-					<div v-show="index == 0">
-						<van-field v-model="item.name" name="名称" label="名称" placeholder="名称"
-							:rules="[{ required: true, message: '请填写名称' }]" />
-						<van-field clickable name="picker" :value="item.relation" label="关系" placeholder="点击选择关系"
-							@click="showGxVisible(index)" :rules="[{ required: true, message: '请选择关系' }]" />
-						<van-popup v-model="gxVisible" position="bottom">
-							<van-picker show-toolbar @confirm="gxConfirm" :columns="gxColumns"
-								@cancel="gxVisible = false" />
-						</van-popup>
-						<van-field v-model="item.phone" name="工作单位" label="工作单位" placeholder="工作单位"
-							:rules="[{ required: true, message: '请填写工作单位' }]" />
-						<van-field v-model="item.workUnit" name="联系电话" label="联系电话" placeholder="联系电话"
-							:rules="[{ required: true, message: '请填写联系电话' }]" />
-						<van-field v-model="item.political" name="政治面貌" label="政治面貌" placeholder="政治面貌"
-							:rules="[{ required: true, message: '请填写政治面貌' }]" />
-					</div>
-				</div>
-				<van-checkbox style="margin: 20px 15px 0;position: relative;top: 255px;" v-model="formFour.ifOil" checked>免费校园网开通预申请</van-checkbox>
-				<div style="margin: 30px 10px 0;text-align: right;position: relative;top: 200px;">
+				<p style="padding: 10px 0;"><i
+						style="color: red;font-size: 20px;position: relative;top: 8px;left: -6px;">*</i>家庭主要成员一</p>
+				<van-field v-model="userFamily[0].name" name="名称" label="名称" placeholder="名称"
+					:rules="[{ required: true, message: '请填写名称' }]" />
+				<van-field clickable name="picker" :value="userFamily[0].relation" label="关系" placeholder="点击选择关系"
+					@click="showGxVisible(0)" :rules="[{ required: true, message: '请选择关系' }]" />
+				<van-popup v-model="gxVisible" position="bottom">
+					<van-picker show-toolbar @confirm="gxConfirm" :columns="gxColumns" @cancel="gxVisible = false" />
+				</van-popup>
+				<van-field v-model="userFamily[0].phone" name="工作单位" label="工作单位" placeholder="工作单位"
+					:rules="[{ required: true, message: '请填写工作单位' }]" />
+				<van-field v-model="userFamily[0].workUnit" name="联系电话" label="联系电话" placeholder="联系电话"
+					:rules="[{ required: true, message: '请填写联系电话' }]" />
+				<van-field v-model="userFamily[0].political" name="政治面貌" label="政治面貌" placeholder="政治面貌"
+					:rules="[{ required: true, message: '请填写政治面貌' }]" />
+				<van-checkbox style="margin: 20px 15px 0;position: relative;top: 255px;width: 250px;"
+					v-model="formFour.ifOil">免费校园网开通预申请</van-checkbox>
+				<div
+					style="margin: 30px 10px 0;text-align: right;position: relative;top: 200px;width: 200px;float: right;">
 					<van-button size="small" hairline style="margin-left: 100px;width: 100px;" type="info"
 						native-type="submit">完成</van-button>
 				</div>
-
 			</van-form>
 		</div>
-		<div class="step-item" v-show="step == 4" style="position: relative;bottom: 100px;">
-				<van-form>
-					<div v-for="(item,index) in userFamily">
-						<p style="padding: 10px 0;" v-show="index == 1"><i v-show="index==0"
-								style="color: red;font-size: 20px;position: relative;top: 8px;left: -6px;">*</i>家庭主要成员{{index == 0 ? "一" : "二"}}
-						</p>
-						<div v-show="index == 1">
-							<van-field v-model="item.name" name="名称" label="名称" placeholder="名称" />
-							<van-field clickable name="picker" :value="item.relation" label="关系" placeholder="点击选择关系"
-								@click="showGxVisible(index)" />
-							<van-popup v-model="gxVisible" position="bottom">
-								<van-picker show-toolbar @confirm="gxConfirm" :columns="gxColumns"
-									@cancel="gxVisible = false" />
-							</van-popup>
-							<van-field v-model="item.phone" name="工作单位" label="工作单位" placeholder="工作单位" />
-							<van-field v-model="item.workUnit" name="联系电话" label="联系电话" placeholder="联系电话" />
-							<van-field v-model="item.political" name="政治面貌" label="政治面貌" placeholder="政治面貌" />
-						</div>
-					</div>
-				</van-form>
-			</div>
+		<div class="step-item" v-show="step == 4" style="position: relative;bottom: 40px;">
+			<van-form>
+				<p style="position: relative;top: 25px;">家庭主要成员二</p>
+				<van-field v-model="userFamily[1].name" name="名称" label="名称" placeholder="名称" />
+				<van-field clickable name="picker" :value="userFamily[1].relation" label="关系" placeholder="点击选择关系"
+					@click="showGxVisible(1)" />
+				<van-popup v-model="gxVisible" position="bottom">
+					<van-picker show-toolbar @confirm="gxConfirm" :columns="gxColumns" @cancel="gxVisible = false" />
+				</van-popup>
+				<van-field v-model="userFamily[1].phone" name="工作单位" label="工作单位" placeholder="工作单位" />
+				<van-field v-model="userFamily[1].workUnit" name="联系电话" label="联系电话" placeholder="联系电话" />
+				<van-field v-model="userFamily[1].political" name="政治面貌" label="政治面貌" placeholder="政治面貌" />
+			</van-form>
+		</div>
 	</div>
 </template>
 
@@ -253,7 +241,7 @@
 				gxVisible: false,
 				showCalendar: false,
 				mzVisible: false,
-				step: 4,
+				step: 0,
 				gxIndex: 0,
 				minDate: new Date(1960, 0, 1),
 				maxDate: new Date(2010, 0, 1),
@@ -373,6 +361,7 @@
 					this.formFour[i] = this.userAllInfo[i]
 				}
 				this.formFour.ifOil = this.formFour.ifOil == 1 ? true : false;
+				console.log(this.formFour.ifOil)
 			},
 			onConfirm(date) {
 				this.formOne.birthday = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
