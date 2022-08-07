@@ -111,7 +111,7 @@
 						native-type="submit">下一步</van-button>
 				</div>
 			</van-form>
-			<van-button size="small" hairline style="width: 100px;position: relative;bottom: 32px;" @click="step = 0">
+			<van-button size="small" hairline style="width: 100px;position: relative;bottom: 32px;left: 10px;" @click="step = 0">
 				上一步</van-button>
 		</div>
 		<div class="step-item" v-show="step == 2">
@@ -142,7 +142,7 @@
 						native-type="submit">下一步</van-button>
 				</div>
 			</van-form>
-			<van-button size="small" hairline style="width: 100px;position: relative;bottom: 32px;" @click="step = 1">
+			<van-button size="small" hairline style="width: 100px;position: relative;bottom: 32px;left: 10px;" @click="step = 1">
 				上一步</van-button>
 		</div>
 		<div class="step-item" v-show="step == 3">
@@ -185,7 +185,7 @@
 						native-type="submit">下一步</van-button>
 				</div>
 			</van-form>
-			<van-button size="small" hairline style="width: 100px;position: relative;bottom: 32px;" @click="step = 2">
+			<van-button size="small" hairline style="width: 100px;position: relative;bottom: 32px;left: 10px;" @click="step = 2">
 				上一步</van-button>
 		</div>
 		<div class="step-item" v-show="step == 4">
@@ -403,7 +403,7 @@
 							title: '系统提示',
 							message: '修改成功'
 						});
-						this.$router.push("/greenChannel")
+						this.$router.push("/home")
 					}
 				})
 			}

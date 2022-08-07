@@ -12,6 +12,7 @@
 			</van-swipe>
 		</div>
 		<van-cell-group inset>
+			<i class="red-icon">*</i>
 			<van-cell title="信息填报" @click="toPath('preSchoolInfo')" />
 		</van-cell-group>
 		<van-cell-group inset style="margin-top: 8px;">
@@ -21,15 +22,19 @@
 			<van-cell title="转专业申请" @click="toPath('switchMajor')" />
 		</van-cell-group>
 		<van-cell-group inset style="margin-top: 8px;">
+			<i class="red-icon">*</i>
 			<van-cell title="去缴费" @click="toPayEvent" />
 		</van-cell-group>
 		<van-cell-group inset style="margin-top: 8px;">
+			<i class="red-icon">*</i>
 			<van-cell title="缴费信息查看" @click="toPath('payinfo')" />
 		</van-cell-group>
 		<van-cell-group inset style="margin-top: 8px;">
+			<i class="red-icon">*</i>
 			<van-cell title="班级分配查询" @click="toPath('classGrade')" />
 		</van-cell-group>
 		<van-cell-group inset style="margin-top: 8px;">
+			<i class="red-icon">*</i>
 			<van-cell title="宿舍查询" @click="toPath('dormitory')" />
 		</van-cell-group>
 		<van-popup v-model="payVisible" style="width: calc(100% - 20px);border-radius: 5px;padding: 10px;">
@@ -37,8 +42,10 @@
 			<p style="line-height: 24px;">1.请学生点击缴费自主缴费</p>
 			<p style="line-height: 24px;">2.对于想申请转专业的学生，请先申请转专业再进行缴费，如已缴费再申请转专业，请到校内联系老师，或联系辅导员。</p>
 			<p style="line-height: 24px;">3.对于家庭困难、退伍军人等特殊学生，开放了绿色通道功能，可以进行提交相关信息。</p>
-			<van-button color="#7232dd" plain block @click="toPath('greenChannelApply')" style="margin-top: 10px;">绿色通道申请</van-button>
-			<van-button color="#7232dd" plain block @click="toPath('switchMajor')" style="margin-top: 10px;">转专业申请</van-button>
+			<van-button color="#7232dd" plain block @click="toPath('greenChannelApply')" style="margin-top: 10px;">
+				绿色通道申请</van-button>
+			<van-button color="#7232dd" plain block @click="toPath('switchMajor')" style="margin-top: 10px;">转专业申请
+			</van-button>
 			<van-checkbox v-model="noAlert" style="margin-top: 10px;">不再提示</van-checkbox>
 			<div style="display: flex;margin-top: 20px;">
 				<van-button type="default" style="flex: 1;" @click="payVisible=false">取消</van-button>
@@ -60,12 +67,12 @@
 		data() {
 			return {
 				payVisible: false,
-				noAlert:false,
+				noAlert: false,
 				imagesList: [require("@/assets/images/p2.jpg"), require("@/assets/images/p1.jpg"), require(
 					"@/assets/images/p3.jpg"), require("@/assets/images/p4.jpg"), require(
 					"@/assets/images/p5.jpg"), require("@/assets/images/p6.jpg")],
 				tabIndex: 0,
-				noAlertStatus:false
+				noAlertStatus: false
 			};
 		},
 		components: {
@@ -74,11 +81,11 @@
 			mine
 		},
 		methods: {
-			toPayEvent(){
+			toPayEvent() {
 				console.log(localStorage.getItem("noAlert") == true)
-				if(localStorage.getItem("noAlert") == true || localStorage.getItem("noAlert") == 'true'){
+				if (localStorage.getItem("noAlert") == true || localStorage.getItem("noAlert") == 'true') {
 					window.open('http://qfyd.cdbyrj.com/Phone/default.aspx')
-				}else{
+				} else {
 					this.payVisible = true;
 				}
 			},
@@ -86,8 +93,8 @@
 				this.$router.push("/" + url)
 			},
 			toPay() {
-				if(this.noAlert){
-					localStorage.setItem("noAlert",true)
+				if (this.noAlert) {
+					localStorage.setItem("noAlert", true)
 				}
 				this.payVisible = false;
 				window.open('http://qfyd.cdbyrj.com/Phone/default.aspx')
@@ -103,9 +110,20 @@
 		background-color: #f7f8fa;
 		overflow-y: scroll;
 	}
-	.van-cell{
+
+	.red-icon {
+		color: red;
+		position: absolute;
+		left: 7px;
+		top: 12px;
+		z-index: 9;
+		font-size: 16px;
+	}
+
+	.van-cell {
 		padding: 8px 16px !important;
 	}
+
 	.van-cell-group--inset {
 		margin: 0 10px;
 	}
